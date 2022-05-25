@@ -1,7 +1,7 @@
 import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
 import schema from './Infraestructure/schemaGraph'
-import { connect } from './Infraestructure/database'
+import { connect } from './persistence/database'
 
 const app = express()
 connect()
