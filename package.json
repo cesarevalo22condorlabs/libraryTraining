@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest --forceExit",
+    "test:watch": "NODE_ENV=test jest  --watchAll",
     "build": "babel src -d dist --source-maps",
     "start:dev": "nodemon src/index.js --exec babel-node",
     "start": "babel-node src/index.js"
@@ -26,7 +27,9 @@
     "@babel/core": "^7.18.0",
     "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.0",
-    "response-time": "^2.3.2"
-
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
+    "response-time": "^2.3.2",
+    "supertest": "^6.2.3"
   }
 }
