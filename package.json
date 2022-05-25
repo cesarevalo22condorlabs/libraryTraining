@@ -18,12 +18,15 @@
     "graphql": "^16.5.0",
     "graphql-tools": "^8.2.11",
     "mongoose": "^6.3.4",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "redis": "^4.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.0",
     "@babel/node": "^7.17.10",
-    "@babel/preset-env": "^7.18.0"
+    "@babel/preset-env": "^7.18.0",
+    "response-time": "^2.3.2"
+
   }
 }
