@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {generalConfig} from "../config/generalConfig";
+import {generalConfig} from "../config/generalConfig.js";
 
 export async function connect() {
     try {

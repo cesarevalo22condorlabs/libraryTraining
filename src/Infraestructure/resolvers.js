@@ -1,4 +1,4 @@
-import Book from '../persistence/models/books'
+import Book from '../persistence/models/books.js'
 
 export const resolvers = {
     Query:{
