@@ -1,9 +1,9 @@
-
+import Book from '../persistence/models/books'
 
 export const resolvers = {
     Query:{
-        listBooks: () => {
-            return 'list books'
+         listBooks: async () => {
+            return await Book.find()
         }, 
         getBooks: () => {
             return 'getBooks'
