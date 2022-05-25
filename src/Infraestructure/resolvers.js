@@ -1,9 +1,32 @@
 
 
 export const resolvers = {
-    prueba: {
-        test() {
-            console.log("hello")
+    Query:{
+        listBooks: () => {
+            return 'list books'
+        }, 
+        getBooks: () => {
+            return 'getBooks'
         }   
+    },
+
+    Mutation:{
+        createBook: () => {
+            return 'createBook'
+        },
+
+        updateBook: () => {
+            return 'updateBook'
+        },
+        
+        modifyBook: () => {
+            return 'modifyBook'
+        },
+
+        deleteBook: () => {
+            return 'deleteBook'
+        }
     }
+    
+
 }

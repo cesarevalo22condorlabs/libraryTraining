@@ -1,9 +1,10 @@
 import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
 import schema from './Infraestructure/schemaGraph'
+import { connect } from './Infraestructure/database'
 
 const app = express()
-
+connect()
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
