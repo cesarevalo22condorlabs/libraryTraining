@@ -3,34 +3,40 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "NODE_ENV=test jest --forceExit",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
     "test:watch": "NODE_ENV=test jest  --watchAll",
     "build": "src -d dist --source-maps",
-    "start:dev": "nodemon src/index.js ",
-    "start": "node src/index.js"
+    "start:dev": "NODE_ENV=development nodemon src/index.js --exec babel-node",
+    "start": "NODE_ENV=production node src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commander": "^9.2.0",
     "express": "^4.18.1",
     "express-graphql": "^0.12.0",
     "graphql": "^16.5.0",
     "graphql-tools": "^8.2.11",
     "mongoose": "^6.3.4",
     "nodemon": "^2.0.16",
-    "redis": "^4.1.0"
+    "redis": "^4.1.0",
+    "redis-commander": "^0.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.0",
+    "@babel/core": "^7.18.2",
     "@babel/node": "^7.17.10",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-env": "^7.18.2",
     "babel-jest": "^28.1.0",
+    "eslint": "^8.16.0",
     "jest": "^28.1.0",
     "response-time": "^2.3.2",
     "supertest": "^6.2.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
   }
 }

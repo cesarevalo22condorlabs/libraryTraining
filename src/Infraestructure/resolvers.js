@@ -1,4 +1,5 @@
 import Book from '../persistence/models/books.js'
+import * as bookUseCase from './useCase/booksUseCase.js'
 
 export const resolvers = {
     Query:{
@@ -11,20 +12,17 @@ export const resolvers = {
     },
 
     Mutation:{
-        createBook: () => {
-            return 'createBook'
+        createBook: async (_,{input}) => {
+            console.log("input", input)
+            return await bookUseCase.createBook (input)
         },
 
-        updateBook: () => {
-            return 'updateBook'
+        updateBook: async (_, {input}) => {
+            return await bookUseCase.updateBook(input)
         },
         
-        modifyBook: () => {
-            return 'modifyBook'
-        },
-
-        deleteBook: () => {
-            return 'deleteBook'
+        deleteBook: async (_, _id) => {
+            return await bookUseCase.deleteBook(_id)
         }
     }
     

@@ -17,10 +17,24 @@ const typeDefs = `
     }
 
     type Mutation {
-        createBook(title: String!, author: String!, pages: Int!, status: String!): Book
-        updateBook(id: ID!, title: String!, author: String!, pages: Int!, status: String!): Book
-        modifyBook(id: ID!, title: String, author: String, pages: Int, status: String): Book
-        deleteBook(id: ID!): Book
+        createBook(input: BookInput): Book
+        updateBook(input: UpdateBookInput): Book
+        deleteBook(_id: ID!): ID
+    }
+
+    input BookInput {
+        title: String!
+        author: String!
+        pages: Int!
+        status: String!
+    }
+
+    input UpdateBookInput{
+        _id: ID!
+        title: String,
+        author: String,
+        pages: Int,
+        status: String
     }
 
 `
