@@ -6,8 +6,8 @@ export const resolvers = {
          listBooks: async () => {
             return await Book.find()
         }, 
-        getBooks: () => {
-            return 'getBooks'
+        getBooks: (_, id) => {
+            return bookUseCase.getBooks(id)
         }   
     },
 

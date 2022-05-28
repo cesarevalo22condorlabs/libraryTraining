@@ -4,7 +4,7 @@ import { resolvers } from './resolvers.js'
 const typeDefs = `
     type Query {
       listBooks: [Book],
-      getBooks(id: ID!): Book
+      getBooks(_id: ID!): Book
     }
 
 

@@ -3,16 +3,13 @@ import { graphqlHTTP } from 'express-graphql'
 import responseTime from 'response-time'
 import schema from './Infraestructure/schemaGraph.js'
 import { connect } from './persistence/database.js'
-import {createClient} from 'redis'
-
+import client from './redis.js'
 
 
 const app = express()
 connect()
-
-const client = createClient()
-client.on('error', (err) => console.log('Redis Client Error', err));
 client.connect()
+
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
