@@ -1,5 +1,5 @@
 import Book from '../../persistence/models/books.js'
-import client from '../../redis.js'
+import client from '../../persistence/redisConnection.js'
 import { getRedisElement, setRedisElement, deleteRedisElement } from '../../Infraestructure/useCase/redisUseCase.js'
 
 export const listBooks = async() => {

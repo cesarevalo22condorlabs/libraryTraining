@@ -1,4 +1,4 @@
-import client from '../../redis.js'
+import client from '../../persistence/redisConnection.js'
 
 export const getRedisElement = async(key) => {
     const flagRedis = await client.get(`${key}`)

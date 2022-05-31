@@ -2,12 +2,14 @@ import express from 'express'
 import { graphqlHTTP } from 'express-graphql'
 import responseTime from 'response-time'
 import schema from './Infraestructure/schemaGraph.js'
-import { connect } from './persistence/database.js'
-import client from './redis.js'
+import { connect } from './persistence/mongoConnection.js'
+import client from './persistence/redisConnection.js'
 
 
 const app = express()
+
 connect()
+
 client.connect()
 
 
