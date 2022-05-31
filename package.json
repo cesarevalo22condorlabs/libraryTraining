@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
+    "test": "NODE_ENV=test jest  --watchAll",
     "test:watch": "NODE_ENV=test jest  --watchAll",
     "build": "src -d dist --source-maps",
     "start:dev": "NODE_ENV=development nodemon src/index.js --exec babel-node",
