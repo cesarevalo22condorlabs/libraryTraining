@@ -1,27 +1,36 @@
 import Book from '../../persistence/models/books.js'
-import client from '../../persistence/redisConnection.js'
 import { getRedisElement, setRedisElement, deleteRedisElement } from '../../Infraestructure/useCase/redisUseCase.js'
+import logger from "@condor-labs/logger"
 
 export const listBooks = async() => {
     return await Book.find()
 }
 
-export const getBooks = async({_id}) => {
 
-    const flagRedis = await getRedisElement(`${_id}`)
-    if(flagRedis) 
-        return flagRedis
-    
-    const data = await Book.findById(_id)
-    await setRedisElement(`${_id}`, data)
-    return data
-}
 
 export const createBook = async(bookInput) => {
     const newBook = new Book(bookInput)
     console.log("newBook", newBook)
     await newBook.save()
     return newBook
+}
+
+export const getBooks = async({_id}) => {
+    try {
+        console.log('iam here')
+        const flagRedis = await getRedisElement(`${_id}`)
+        if(flagRedis) 
+            return flagRedis
+        
+        const data = await Book.findById(_id)
+        console.log('data', data)
+        await setRedisElement(`${_id}`, data)
+        console.log('data', data)
+        return data    
+    } catch (error) {
+        logger.error(error)
+    }
+    
 }
 
 export const updateBook = async(updateBookInput) => {

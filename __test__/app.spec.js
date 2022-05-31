@@ -12,7 +12,7 @@ beforeEach(() => {
 
 describe("Resolver", () => {
     describe("Create a Book", () => {
-      it("It should return a book", async () => {
+      it("It should create a book", async () => {
         //Arrange
         const book = {
             title: "The Lord of the Rings",
