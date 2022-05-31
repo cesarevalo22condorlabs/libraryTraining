@@ -5,11 +5,10 @@ import condorMongo from "@condor-labs/mongodb";
 
 export async function connect() {
     try {
-        console.log("<<< db conneting")
-        condorMongo(mongo.mongoDbSettings);
+        const mongodb = condorMongo(mongo.mongoDbSettings.Settings);
 
-        await condorMongo.getClient()
-        console.log(`isConnected(after):${condorMongo._isConnected()}`);
+        await mongodb.getClient()
+        console.log(`isConnected(after):${mongodb._isConnected()}`);
 
     } catch (error) {
         console.log("something goes wrong")

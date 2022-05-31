@@ -1,13 +1,11 @@
 module.exports.mongoDbSettings = {
     Settings: {
-     
+      host: "localhost",
       port: 27017,
       database: "libraryTraining",
-      user: "my-user",
-      password: "superSecretPass",
-      replicaSet: "compliance-support-shard-0",
-      ssl: true,
+      user: "",
+      password: "",
+      ssl: false,
       authSource: "admin",
-      host: '',
     },
   };

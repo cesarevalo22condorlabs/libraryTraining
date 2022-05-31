@@ -1,6 +1,6 @@
-import mongoose from "mongoose"
+const mongodb = require("@condor-labs/mongodb")();
 
-const bookSchema = new mongoose.Schema({
+const bookSchema = mongodb.mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -19,5 +19,6 @@ const bookSchema = new mongoose.Schema({
         enum: ['available', 'unavailable','lent']
     }
 })
+const book = mongodb.mongoose.model('Book', bookSchema)
 
-export default mongoose.model('Book', bookSchema)
+export default book

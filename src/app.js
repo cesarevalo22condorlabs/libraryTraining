@@ -7,7 +7,9 @@ import client from './redis.js'
 
 
 const app = express()
+
 connect()
+
 client.connect()
 
 
