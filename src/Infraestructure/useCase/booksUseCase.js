@@ -22,7 +22,6 @@ export const getBooks = async({_id}) => {
         
         const data = await Book.findById(_id)
         await setRedisElement(`${_id}`, data)
-        console.log('data', data)
         return data    
     } catch (error) {
         logger.error(error)

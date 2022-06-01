@@ -4,17 +4,10 @@ import logger from "@condor-labs/logger"
 
 export const getRedisElement = async(key) => {
     try {
-        console.log('key', key)
-    const flagRedisA =  client.get(`${key}`, (err, reply) => {
-        //resolve(reply)
-        console.log('reply', reply)})
+    const flagRedis = await client.getAsync(`${key}`)
     
-    const flagRedisC = await client.getAsync(`${key}`)
-    
-
-    console.log('flagRedis', flagRedisC)
-    if(flagRedisC) 
-        return JSON.parse(flagRedisC)
+    if(flagRedis) 
+        return JSON.parse(flagRedis)
     return null
     } catch (error) {
         logger.error(error)

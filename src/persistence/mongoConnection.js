@@ -1,5 +1,6 @@
 import {mongo} from "../config/mongoSettings.js";
 import condorMongo from "@condor-labs/mongodb";
+import logger from "@condor-labs/logger";
 
 export async function connect() {
     try {
@@ -7,10 +8,10 @@ export async function connect() {
         const mongodb = condorMongo(mongo);
 
         await mongodb.getClient()
-        console.log(`mongo is conected:${mongodb._isConnected()}`);
+        logger.log(`mongo is conected:${mongodb._isConnected()}`);
 
     } catch (error) {
-        console.log("something goes wrong")
-        console.log(error)
+        logger.log("something goes wrong")
+        logger.error(error)
     }
 }

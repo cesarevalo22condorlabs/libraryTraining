@@ -5,7 +5,6 @@ import redis from '@condor-labs/redis'
 export let client
 export const connectRedis = async () => {
     try {
-        console.log('this is settings',Settings)
         const _redis = redis(Settings)
 
         // get client
