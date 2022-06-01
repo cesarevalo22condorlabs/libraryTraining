@@ -8,9 +8,7 @@ import {connectRedis} from './persistence/redisConnection.js'
 
 const app = express();
 
-
-
-
+require('dotenv').config();
 
 
 app.use(express.urlencoded({extended:false}));
@@ -18,8 +16,6 @@ app.use(express.json());
 
 //header measure time for redis
 app.use(responseTime());
-
-
 
 (async () => {
     await connect() 
