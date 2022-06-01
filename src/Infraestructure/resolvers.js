@@ -13,7 +13,6 @@ export const resolvers = {
 
     Mutation:{
         createBook: async (_,{input}) => {
-            console.log("input", input)
             return await bookUseCase.createBook (input)
         },
 

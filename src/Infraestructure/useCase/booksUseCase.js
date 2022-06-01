@@ -10,20 +10,17 @@ export const listBooks = async() => {
 
 export const createBook = async(bookInput) => {
     const newBook = new Book(bookInput)
-    console.log("newBook", newBook)
     await newBook.save()
     return newBook
 }
 
 export const getBooks = async({_id}) => {
     try {
-        console.log('iam here')
         const flagRedis = await getRedisElement(`${_id}`)
         if(flagRedis) 
             return flagRedis
         
         const data = await Book.findById(_id)
-        console.log('data', data)
         await setRedisElement(`${_id}`, data)
         console.log('data', data)
         return data    
