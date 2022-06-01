@@ -5,7 +5,7 @@ export const mongo = {
     user: process.env.MONGO_USER || "",
     password: process.env.MONGO_PASSWORD || "",
     ssl: process.env.MONGO_SSL || false,
-    ...(process.env.REPLICASET && process.env.REPLICASET !== '' ? { replicaSet:process.env.REPLICASET } : {}),
+    ...(process.env.REPLICASET ? { replicaSet:process.env.REPLICASET } : {}),
     authSource: "admin"
 }
   //...(!isEmpty(name) ? { name } : {}),
