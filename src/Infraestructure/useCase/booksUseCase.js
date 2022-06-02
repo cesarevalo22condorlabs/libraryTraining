@@ -13,9 +13,11 @@ export const listBooks = async() => {
 
 export const createBook = async(bookInput) => {
     try {
+        console.log('test')
         return await mongoMethods.createElement(Book, bookInput)
     } catch (error) {
         throw error.message
+        
     }
 }
 
