@@ -1,46 +1,61 @@
 import Book from '../../persistence/models/books.js'
 import { getRedisElement, setRedisElement, deleteRedisElement } from '../../Infraestructure/useCase/redisUseCase.js'
 import logger from "@condor-labs/logger"
+import * as mongoMethods from './mongoUseCase'
 
 export const listBooks = async() => {
-    return await Book.find()
+    try {
+        return await mongoMethods.findAllElements(Book)
+    } catch (error) {
+        throw error.message
+    }
 }
 
-
-
 export const createBook = async(bookInput) => {
-    const newBook = new Book(bookInput)
-    await newBook.save()
-    return newBook
+    try {
+        return await mongoMethods.createElement(Book, bookInput)
+    } catch (error) {
+        throw error.message
+    }
 }
 
 export const getBooks = async({_id}) => {
     try {
         const flagRedis = await getRedisElement(`${_id}`)
+        console.log('flagRedis',flagRedis)
         if(flagRedis) 
             return flagRedis
         
-        const data = await Book.findById(_id)
+        const data = await mongoMethods.findElement(Book, _id)
         await setRedisElement(`${_id}`, data)
         return data    
     } catch (error) {
-        logger.error(error)
+        throw error.message
     }
     
 }
 
 export const updateBook = async(updateBookInput) => {
-    const flagRedis = await getRedisElement(`${updateBookInput._id}`)
-    if(flagRedis)
-        await deleteRedisElement(`${updateBookInput._id}`)
-    return await Book.findByIdAndUpdate(updateBookInput._id, updateBookInput, {new: true})
+    try {
+        const flagRedis = await getRedisElement(`${updateBookInput._id}`)
+        if(flagRedis)
+            await deleteRedisElement(`${updateBookInput._id}`)
+        return await mongoMethods.updateElement(Book, updateBookInput)
+    } catch (error) {
+        throw error.message
+    }
+    
 }
 
-export const deleteBook = async(id) => {
-    const flagRedis = await getRedisElement(`${id}`)
-    if(flagRedis)
-        await deleteRedisElement(`${id}`)
-    return await Book.findByIdAndDelete(id)
+export const deleteBook = async({_id}) => {
+    try {
+        const flagRedis = await getRedisElement(_id)
+        if(flagRedis)
+            await deleteRedisElement(_id)
+        return await mongoMethods.deleteElement(Book, _id)
+    } catch (error) {
+        throw error.message
+    }
 }
 
 

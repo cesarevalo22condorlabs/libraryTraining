@@ -16,9 +16,19 @@ export const getRedisElement = async(key) => {
 }
 
 export const setRedisElement = async(key, value) => {
-    return await client.set(`${key}`, JSON.stringify(value))
+    try {
+        return await client.set(`${key}`, JSON.stringify(value))
+    }catch (error) {
+        logger.error(error)
+        throw error
+    }
 }
 
 export const deleteRedisElement = async(key) => {
-    return await client.del(`${key}`)
+    try {
+        return await client.del(`${key}`)
+    }catch (error) {
+        logger.error(error)
+        throw error
+    }
 }
