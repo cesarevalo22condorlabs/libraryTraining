@@ -1,8 +1,9 @@
 module.exports = {
     apps: {
         name: 'library-training',
-        script: './src/index.js',
+        script: './dist/index.js',
         watch: true,
+        interpreter: './node_modules/.bin/babel-node',
         env: {
             NODE_ENV: 'development',
         },
