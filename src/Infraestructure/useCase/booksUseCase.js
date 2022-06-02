@@ -22,7 +22,6 @@ export const createBook = async(bookInput) => {
 export const getBooks = async({_id}) => {
     try {
         const flagRedis = await getRedisElement(`${_id}`)
-        console.log('flagRedis',flagRedis)
         if(flagRedis) 
             return flagRedis
         
