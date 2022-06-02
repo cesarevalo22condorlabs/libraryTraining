@@ -6,7 +6,20 @@ services:
         restart: always
         build: .
         ports:
-            - "4000:3000"
+            - "3000:3000"
+        environment:
+            - PORT=3000
+            - REDIS_HOST=redis-15862.c16.us-east-1-2.ec2.cloud.redislabs.com
+            - REDIS_PORT=15862
+            - REDIS_PASSWORD=jIJLnCTrecfeApV45ArJSyabMKnwhdDp
+            - MONGO_HOST=ac-uvprpao-shard-00-00.7azlnw4.mongodb.net,ac-uvprpao-shard-00-01.7azlnw4.mongodb.net,ac-uvprpao-shard-00-02.7azlnw4.mongodb.net
+            - MONGO_PORT=27017
+            - MONGO_DB=libraryTraining
+            - MONGO_USER=cesar
+            - MONGO_PASSWORD=Santi522$$
+            - MONGO_SSL=true
+            - REPLICASET=atlas-f0yfwu-shard-0
+
        
 
     
